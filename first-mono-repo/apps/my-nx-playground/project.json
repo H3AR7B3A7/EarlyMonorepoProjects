@@ -1,0 +1,119 @@
+{
+  "projectType": "application",
+  "root": "apps/my-nx-playground",
+  "sourceRoot": "apps/my-nx-playground/src",
+  "prefix": "first-mono-repo",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:webpack-browser",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "options": {
+        "outputPath": "dist/apps/my-nx-playground",
+        "index": "apps/my-nx-playground/src/index.html",
+        "main": "apps/my-nx-playground/src/main.ts",
+        "polyfills": "apps/my-nx-playground/src/polyfills.ts",
+        "tsConfig": "apps/my-nx-playground/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "apps/my-nx-playground/src/favicon.ico",
+          "apps/my-nx-playground/src/assets"
+        ],
+        "styles": [
+          "apps/my-nx-playground/src/styles.scss"
+        ],
+        "scripts": [],
+        "customWebpackConfig": {
+          "path": "apps/my-nx-playground/webpack.config.js"
+        }
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/my-nx-playground/src/environments/environment.ts",
+              "with": "apps/my-nx-playground/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all",
+          "customWebpackConfig": {
+            "path": "apps/my-nx-playground/webpack.prod.config.js"
+          }
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@nrwl/angular:webpack-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "my-nx-playground:build:production"
+        },
+        "development": {
+          "browserTarget": "my-nx-playground:build:development"
+        }
+      },
+      "defaultConfiguration": "development",
+      "options": {
+        "publicHost": "http://localhost:4200",
+        "port": 4200
+      }
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "my-nx-playground:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/my-nx-playground/src/**/*.ts",
+          "apps/my-nx-playground/src/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": [
+        "coverage/apps/my-nx-playground"
+      ],
+      "options": {
+        "jestConfig": "apps/my-nx-playground/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "serve-mfe": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          "nx serve remote-one",
+          "nx serve my-nx-playground"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

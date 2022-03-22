@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "projects": {
+    "backend-interface": "libs/backend-interface",
+    "express-backend": "apps/express-backend",
+    "my-nx-playground": "apps/my-nx-playground",
+    "my-nx-playground-e2e": "apps/my-nx-playground-e2e",
+    "react-app": "apps/react-app",
+    "react-app-e2e": "apps/react-app-e2e",
+    "remote-one": "apps/remote-one",
+    "remote-one-e2e": "apps/remote-one-e2e",
+    "ui-header": "libs/ui-header"
+  }
+}

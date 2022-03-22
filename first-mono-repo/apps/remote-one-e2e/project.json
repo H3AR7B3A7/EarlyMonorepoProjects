@@ -1,0 +1,28 @@
+{
+  "root": "apps/remote-one-e2e",
+  "sourceRoot": "apps/remote-one-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/remote-one-e2e/cypress.json",
+        "devServerTarget": "remote-one:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "remote-one:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/remote-one-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["remote-one"]
+}

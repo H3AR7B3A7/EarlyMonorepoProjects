@@ -1,0 +1,28 @@
+{
+  "root": "apps/my-nx-playground-e2e",
+  "sourceRoot": "apps/my-nx-playground-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/my-nx-playground-e2e/cypress.json",
+        "devServerTarget": "my-nx-playground:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "my-nx-playground:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/my-nx-playground-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["my-nx-playground"]
+}
