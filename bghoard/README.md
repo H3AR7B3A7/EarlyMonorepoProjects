@@ -8,7 +8,13 @@
 - Name: review
 - Stylesheet: emotion
 
+## Starting API
+
+> nx serve api
+
 ## E2E Testing: Cypress
+
+> nx e2e review-e2e --watch
 
 ## Unit Testing: Jest
 
