@@ -1,0 +1,71 @@
+{
+  "root": "apps/review",
+  "sourceRoot": "apps/review/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/review",
+        "index": "apps/review/src/index.html",
+        "baseHref": "/",
+        "main": "apps/review/src/main.tsx",
+        "polyfills": "apps/review/src/polyfills.ts",
+        "tsConfig": "apps/review/tsconfig.app.json",
+        "assets": ["apps/review/src/favicon.ico", "apps/review/src/assets"],
+        "styles": [],
+        "scripts": [],
+        "webpackConfig": "@nrwl/react/plugins/webpack"
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/review/src/environments/environment.ts",
+              "with": "apps/review/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:dev-server",
+      "options": {
+        "buildTarget": "review:build",
+        "hmr": true,
+        "proxyConfig": "apps/review/proxy.conf.json"
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "review:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/review/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/review"],
+      "options": {
+        "jestConfig": "apps/review/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
