@@ -1,4 +1,4 @@
-# Bghoard
+# Board Game Hoard
 
 ## Project Generation
 
