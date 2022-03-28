@@ -18,12 +18,7 @@ export const App = () => {
       <div>{m.message}</div>
       <Routes>
         <Route path="/" element={<ReviewFeatureList />} />
-        <Route
-          path="/:game"
-          element={({ match }: { match: any }) => (
-            <ReviewFeatureDetails gameId={match.params.game} />
-          )}
-        />
+        <Route path="/:gameId" element={<ReviewFeatureDetails />} />
       </Routes>
     </BrowserRouter>
   );

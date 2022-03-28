@@ -1,35 +1,37 @@
-import { Review } from "@bghoard/api-interfaces";
-import { useGames } from "@bghoard/review/data-access-games";
-import { currencyFormat, ratingFormat } from "@bghoard/review/util-formatters";
-import { useState } from "react";
+import { Review } from '@bghoard/api-interfaces';
+import { useGames } from '@bghoard/review/data-access-games';
+import { currencyFormat, ratingFormat } from '@bghoard/review/util-formatters';
+import { useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 /* eslint-disable-next-line */
 export interface ReviewFeatureDetailsProps {
   gameId: string;
 }
 
-export const ReviewFeatureDetails = ({ gameId } : { gameId: string }) => {
+export const ReviewFeatureDetails = () => {
   const games = useGames();
-  const game = games.find(g => g.id === gameId);
+  const { gameId } = useParams();
+  const game = games.find((g) => g.id === gameId);
 
   const [reviewForm, setReviewForm] = useState<Review>({
     game: game && game.id,
     content: '',
-    rating: 0
+    rating: 0,
   });
 
   function createReview() {
     fetch('/api/review/' + (game && game.id), {
       body: JSON.stringify(reviewForm),
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
-      method: 'POST'
+      method: 'POST',
     }).then(() => {
       setReviewForm({
         game: game?.id,
         rating: 0,
-        content: ''
+        content: '',
       });
     });
   }
@@ -50,7 +52,7 @@ export const ReviewFeatureDetails = ({ gameId } : { gameId: string }) => {
       <p>{game.description}</p>
       <dl>
         <dt>Rating:</dt>
-        {game.rating && (<dd>{ratingFormat(game.rating)}</dd>)}
+        {game.rating && <dd>{ratingFormat(game.rating)}</dd>}
         <br />
         <dt>Price:</dt>
         <dd>{currencyFormat(game.price)}</dd>
@@ -69,7 +71,7 @@ export const ReviewFeatureDetails = ({ gameId } : { gameId: string }) => {
                 min="0"
                 max="5"
                 value={reviewForm.rating}
-                onChange={event =>
+                onChange={(event) =>
                   setReviewForm({ ...reviewForm, rating: +event.target.value })
                 }
               />
@@ -83,7 +85,7 @@ export const ReviewFeatureDetails = ({ gameId } : { gameId: string }) => {
                 name="content"
                 style={{ width: '100%' }}
                 value={reviewForm.content}
-                onChange={event =>
+                onChange={(event) =>
                   setReviewForm({ ...reviewForm, content: event.target.value })
                 }
               />
