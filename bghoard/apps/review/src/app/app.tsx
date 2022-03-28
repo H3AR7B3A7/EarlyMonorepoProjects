@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Game } from '@';
+import { Game } from '@bghoard/api-interfaces';
 
 export const App = () => {
   const [m, setMessage] = useState({message: ''})
