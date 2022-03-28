@@ -8,7 +8,7 @@ import {
   TileLeftCorner,
   TileRightCorner,
 } from '@bghoard/review/ui-tile';
-import { ratingFormat } from '@bghoard/review/util-formatters';
+import { ratingFormat, currencyFormat } from '@bghoard/review/util-formatters';
 
 /* eslint-disable-next-line */
 export interface ReviewFeatureListProps {}
@@ -20,7 +20,7 @@ export const ReviewFeatureList = (props: ReviewFeatureListProps) => {
       {games.map((game) => {
         return (
           <a
-            href={'/' + game.id}
+            href={'/review/' + game.id}
             key={game.id}
             style={{ textDecoration: 'none', color: 'inherit' }}
           >
@@ -34,7 +34,7 @@ export const ReviewFeatureList = (props: ReviewFeatureListProps) => {
               {game.rating && (
                 <TileLeftCorner>{ratingFormat(game.rating)}</TileLeftCorner>
               )}
-              <TileRightCorner>{game.price}</TileRightCorner>
+              <TileRightCorner>{currencyFormat(game.price)}</TileRightCorner>
             </Tile>
           </a>
         );
@@ -44,3 +44,6 @@ export const ReviewFeatureList = (props: ReviewFeatureListProps) => {
 };
 
 export default ReviewFeatureList;
+function priceFormat(price: number): import('react').ReactNode {
+  throw new Error('Function not implemented.');
+}
