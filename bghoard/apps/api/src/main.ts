@@ -7,6 +7,14 @@ import { addItemToCart, getCart, updateItemInCart } from './app/store';
 const app = express();
 app.use(express.json());
 
+app.get('/api', (req, res) => {
+  res.send({
+    message: 'Quote of the day: '
+      + 'The greatest glory in living lies not in never falling, '
+      + 'but in rising every time we fall.'
+  })
+})
+
 app.get('/api/game', getGames);
 
 app.get('/api/review/:game', getReviews);
