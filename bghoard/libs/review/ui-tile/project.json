@@ -1,0 +1,23 @@
+{
+  "root": "libs/review/ui-tile",
+  "sourceRoot": "libs/review/ui-tile/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/review/ui-tile/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/review/ui-tile"],
+      "options": {
+        "jestConfig": "libs/review/ui-tile/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  }
+}

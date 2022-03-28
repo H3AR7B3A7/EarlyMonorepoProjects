@@ -1,0 +1,25 @@
+{
+  "root": "libs/review/data-access-games",
+  "sourceRoot": "libs/review/data-access-games/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "libs/review/data-access-games/**/*.{ts,tsx,js,jsx}"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/review/data-access-games"],
+      "options": {
+        "jestConfig": "libs/review/data-access-games/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  }
+}

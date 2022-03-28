@@ -1,8 +1,8 @@
 describe('review', () => {
-  beforeEach(() => cy.visit('/'));
+  beforeEach(() => cy.visit('/review'));
 
   it('should display welcome message', () => {
-    cy.contains('Board Game Hoard: Review!');
+    cy.contains('Board Game Hoard: Review');
   });
 
   it('should display a list of games', () => {

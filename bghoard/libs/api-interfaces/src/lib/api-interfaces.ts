@@ -14,7 +14,7 @@ export interface Test {
 }
 
 export interface Review {
-  game: string;
+  game?: string;
   rating: number;
   content: string;
 }

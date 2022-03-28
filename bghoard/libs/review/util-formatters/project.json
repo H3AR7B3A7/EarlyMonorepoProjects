@@ -1,0 +1,23 @@
+{
+  "root": "libs/review/util-formatters",
+  "sourceRoot": "libs/review/util-formatters/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/review/util-formatters/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/review/util-formatters"],
+      "options": {
+        "jestConfig": "libs/review/util-formatters/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  }
+}

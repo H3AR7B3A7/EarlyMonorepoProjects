@@ -4,6 +4,11 @@
     "api": "apps/api",
     "api-interfaces": "libs/api-interfaces",
     "review": "apps/review",
-    "review-e2e": "apps/review-e2e"
+    "review-data-access-games": "libs/review/data-access-games",
+    "review-e2e": "apps/review-e2e",
+    "review-feature-details": "libs/review/feature-details",
+    "review-feature-list": "libs/review/feature-list",
+    "review-ui-tile": "libs/review/ui-tile",
+    "review-util-formatters": "libs/review/util-formatters"
   }
 }

@@ -1,0 +1,23 @@
+{
+  "root": "libs/review/feature-list",
+  "sourceRoot": "libs/review/feature-list/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/review/feature-list/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/review/feature-list"],
+      "options": {
+        "jestConfig": "libs/review/feature-list/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  }
+}
