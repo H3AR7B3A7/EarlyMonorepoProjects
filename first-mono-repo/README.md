@@ -1,4 +1,4 @@
-# Narwal (Nx)
+# Narwhal (Nx)
 
 ## Install the Nx CLI
 
